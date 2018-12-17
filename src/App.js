@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 
 import "./App.css";
+import PrivateRoute from "./components/PrivateRoute";
 const store = createStore();
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/login" component={Login} />
-            <Route path="/" component={Home} />
+            <PrivateRoute path="/" component={Home} />
           </Switch>
         </BrowserRouter>
       </Provider>

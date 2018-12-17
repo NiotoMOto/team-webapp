@@ -8,3 +8,7 @@ export function authHeader() {
     return {};
   }
 }
+
+export const isAuthentificated = () => !!localStorage.getItem("user");
+
+export const setUser = user => localStorage.setItem("user", user);

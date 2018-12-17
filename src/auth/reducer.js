@@ -8,7 +8,6 @@ export const initialState = {
 };
 
 export function authReducer(state = initialState, { payload, type }) {
-  console.log(type);
   switch (type) {
     case authActions.SIGN_IN_SUCCESS:
       return compose(
