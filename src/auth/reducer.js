@@ -29,7 +29,7 @@ export function authReducer(state = initialState, { payload, type }) {
         assoc("authenticated", true),
         assoc("token", null),
         assoc("username", null),
-        assoc("userId", payload.id)
+        assoc("userId", null)
       )(state);
 
     default:

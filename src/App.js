@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { Switch } from "react-router"; // react-router v4
+import { ConnectedRouter } from "connected-react-router";
 
-import createStore from "./store";
+import createStore, { history } from "./store";
 
 import PrivateRoute from "./components/PrivateRoute";
 import AuthRoute from "./components/AuthRoute";
@@ -18,13 +19,13 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <ConnectedRouter history={history}>
           <Switch>
             <AuthRoute path="/login" component={Login} />
             <AuthRoute path="/register" component={Register} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
-        </BrowserRouter>
+        </ConnectedRouter>
       </Provider>
     );
   }
