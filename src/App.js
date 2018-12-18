@@ -6,6 +6,7 @@ import createStore from "./store";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 import "./App.css";
 import PrivateRoute from "./components/PrivateRoute";
@@ -18,6 +19,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
         </BrowserRouter>

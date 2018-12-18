@@ -1,14 +1,17 @@
 export function authHeader() {
   // return authorization header with jwt token
-  let user = JSON.parse(localStorage.getItem("user"));
-
-  if (user && user.token) {
-    return { Authorization: "Bearer " + user.token };
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  if (auth && auth.token) {
+    return { Authorization: "Bearer " + auth.token };
   } else {
     return {};
   }
 }
 
-export const isAuthentificated = () => !!localStorage.getItem("user");
+export const loadLocalStorageAuth = () =>
+  JSON.parse(localStorage.getItem("auth")) || {};
 
-export const setUser = user => localStorage.setItem("user", user);
+export const isAuthentificated = () => !!localStorage.getItem("auth");
+
+export const setUser = auth =>
+  localStorage.setItem("auth", JSON.stringify(auth));

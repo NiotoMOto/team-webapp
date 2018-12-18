@@ -9,7 +9,15 @@ export const login = ({ username, password }) => {
       return res.data;
     });
 };
+export const register = ({ username, password }) => {
+  return axios
+    .post(`${API_END_POINT}/auth/register`, { username, password })
+    .then(res => {
+      return res.data;
+    });
+};
 
 export default {
-  login
+  login,
+  register
 };
