@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 
 import createStore from "./store";
+
+import PrivateRoute from "./components/PrivateRoute";
+import AuthRoute from "./components/AuthRoute";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 import "./App.css";
-import PrivateRoute from "./components/PrivateRoute";
 const store = createStore();
 
 class App extends Component {
@@ -18,8 +20,8 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <AuthRoute path="/login" component={Login} />
+            <AuthRoute path="/register" component={Register} />
             <PrivateRoute path="/" component={Home} />
           </Switch>
         </BrowserRouter>
