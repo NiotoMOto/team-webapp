@@ -15,3 +15,5 @@ export const isAuthentificated = () => !!localStorage.getItem("auth");
 
 export const setUser = auth =>
   localStorage.setItem("auth", JSON.stringify(auth));
+
+export const removeUser = auth => localStorage.removeItem("auth");

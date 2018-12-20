@@ -9,7 +9,7 @@ export const initialState = {
   authenticated: !!localStorageAuth.token,
   token: localStorageAuth.token,
   id: localStorageAuth.id,
-  uusername: localStorageAuth.username
+  username: localStorageAuth.username
 };
 
 export function authReducer(state = initialState, { payload, type }) {

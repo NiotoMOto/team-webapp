@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authActions } from "../auth";
+import { Link } from "react-router-dom";
 
 class Login extends React.Component {
   constructor(props) {
@@ -47,6 +48,9 @@ class Login extends React.Component {
           />
           <button type="submit">Login</button>
         </form>
+        <p>
+          <Link to="/register">Register</Link>
+        </p>
       </div>
     );
   }

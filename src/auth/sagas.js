@@ -2,7 +2,7 @@ import { call, put, takeEvery, fork } from "redux-saga/effects";
 import { push } from "connected-react-router";
 
 import { authActions } from "./actions";
-import { setUser } from "../utils/auth";
+import { setUser, removeUser } from "../utils/auth";
 
 import api from "./api";
 
@@ -29,6 +29,16 @@ function* register(action) {
   }
 }
 
+function* logout(action) {
+  try {
+    yield call(removeUser);
+    yield put({ type: authActions.LOGOUT_SUCCESS });
+    yield put(push("/login"));
+  } catch (e) {
+    yield put({ type: authActions.LOGOUT_FAILED, message: e.message });
+  }
+}
+
 /*
   Starts login on each dispatched `SIGN_IN` action.
   Allows concurrent fetches of user.
@@ -41,4 +51,12 @@ function* watchRegister() {
   yield takeEvery(authActions.REGISTER, register);
 }
 
-export const authSagas = [fork(watchLogin), fork(watchRegister)];
+function* watchLogout() {
+  yield takeEvery(authActions.LOGOUT, logout);
+}
+
+export const authSagas = [
+  fork(watchLogin),
+  fork(watchRegister),
+  fork(watchLogout)
+];

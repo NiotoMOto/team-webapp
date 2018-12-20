@@ -23,7 +23,7 @@ class Register extends React.Component {
     }));
   }
   render() {
-    const { login } = this.props;
+    const { register } = this.props;
     const {
       loginForm: { username, password }
     } = this.state;
@@ -33,7 +33,7 @@ class Register extends React.Component {
         <form
           onSubmit={e => {
             e.preventDefault();
-            login({ username, password });
+            register({ username, password });
           }}>
           <input
             onChange={e => this.updateField("username", e.target.value)}
@@ -53,7 +53,7 @@ class Register extends React.Component {
 }
 
 const mapDispatchToProps = {
-  login: authActions.register
+  register: authActions.register
 };
 
 export default connect(
